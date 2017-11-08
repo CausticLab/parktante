@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
-    StatusBar,
 } from 'react-native';
 
 import Camera from 'react-native-openalpr';
@@ -17,17 +15,18 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 100,
         left: 50,
+        background: '#fff'
     },
     text: {
         textAlign: 'center',
         fontSize: 20,
     },
-    preview: {
+    camera: {
         flex: 1
     }
 });
 
-export default class PlateRecognizer extends React.Component {
+export default class PlateRecognizer extends Component {
     constructor(props) {
         super(props);
 
@@ -55,7 +54,7 @@ export default class PlateRecognizer extends React.Component {
                     ref={(cam) => {
                         this.camera = cam;
                     }}
-                    style={styles.preview}
+                    style={styles.camera}
                     aspect={this.state.camera.aspect}
                     captureQuality={Camera.constants.CaptureQuality.medium}
                     country="eu"
@@ -73,5 +72,3 @@ export default class PlateRecognizer extends React.Component {
         );
     }
 }
-
-//AppRegistry.registerComponent('PlateRecognizer', () => PlateRecognizer);
