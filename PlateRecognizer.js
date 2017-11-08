@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 20,
     },
+    preview: {
+        flex: 1
+    }
 });
 
 export default class PlateRecognizer extends React.Component {
@@ -55,7 +58,7 @@ export default class PlateRecognizer extends React.Component {
                     style={styles.preview}
                     aspect={this.state.camera.aspect}
                     captureQuality={Camera.constants.CaptureQuality.medium}
-                    country="us"
+                    country="eu"
                     onPlateRecognized={this.onPlateRecognized}
                     plateOutlineColor="#ff0000"
                     showPlateOutline
@@ -71,4 +74,4 @@ export default class PlateRecognizer extends React.Component {
     }
 }
 
-AppRegistry.registerComponent('PlateRecognizer', () => PlateRecognizer);
+//AppRegistry.registerComponent('PlateRecognizer', () => PlateRecognizer);

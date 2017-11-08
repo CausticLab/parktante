@@ -23,18 +23,7 @@ const instructions = Platform.select({
 export default class App extends Component<{}> {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Blub
-        </Text>
-        <Text style={styles.instructions}>
-          WUUUP WUUUP
-        </Text>
-        <PlateRecognizer/>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
+      <PlateRecognizer />
     );
   }
 }
