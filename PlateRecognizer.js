@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 100,
         left: 50,
-        background: '#fff'
+        backgroundColor: '#fff'
     },
     text: {
         textAlign: 'center',
@@ -30,10 +30,15 @@ export default class PlateRecognizer extends Component {
     constructor(props) {
         super(props);
 
+        console.log(Camera.constants);
+
+        console.log(Camera.constants.CaptureQuality["720p"]);
+
         this.camera = null;
         this.state = {
             camera: {
                 aspect: Camera.constants.Aspect.fill,
+                captureQuality: Camera.constants.CaptureQuality.photo,
             },
             plate: 'Scan a plate',
         };
@@ -41,8 +46,9 @@ export default class PlateRecognizer extends Component {
 
     onPlateRecognized = ({ plate, confidence }) => {
         if (confidence > 0.9) {
+            let text = plate + " : " + confidence;
             this.setState({
-                plate,
+                plate: text,
             })
         }
     }
@@ -56,12 +62,13 @@ export default class PlateRecognizer extends Component {
                     }}
                     style={styles.camera}
                     aspect={this.state.camera.aspect}
-                    captureQuality={Camera.constants.CaptureQuality.medium}
+                    captureQuality={this.state.camera.captureQuality}
                     country="eu"
                     onPlateRecognized={this.onPlateRecognized}
                     plateOutlineColor="#ff0000"
                     showPlateOutline
                     torchMode={Camera.constants.TorchMode.off}
+                    rotateMode={this.state.rotate ? Camera.constants.RotateMode.on : Camera.constants.RotateMode.off}
                     touchToFocus
                 />
                 <View style={styles.textContainer}>
